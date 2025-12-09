@@ -16,5 +16,5 @@ export default defineConfig(({ command, mode }) => ({
     },
   },
   // GitHub Pages deployment configuration
-  base: command === 'build' ? '/my_portfolio-project/' : '/',
+  base: command === 'build' ? '/my_portfolio/' : '/',
 }));
