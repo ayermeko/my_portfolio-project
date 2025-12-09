@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 220 15% 94%;
+    --foreground: 220 20% 15%;
+
+    --card: 220 15% 97%;
+    --card-foreground: 220 20% 15%;
+
+    --popover: 220 15% 97%;
+    --popover-foreground: 220 20% 15%;
+
+    --primary: 173 80% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 15% 88%;
+    --secondary-foreground: 220 20% 20%;
+
+    --muted: 220 15% 90%;
+    --muted-foreground: 220 15% 40%;
+
+    --accent: 173 80% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 82%;
+    --input: 220 15% 82%;
+    --ring: 173 80% 35%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-primary: linear-gradient(135deg, hsl(173 80% 35%), hsl(190 80% 45%));
+    --gradient-card: linear-gradient(145deg, hsl(220 15% 97%), hsl(220 15% 94%));
+    --glow-primary: 0 0 40px hsl(173 80% 35% / 0.25);
+    --shadow-card: 0 4px 20px hsl(220 20% 15% / 0.1);
+    --shadow-card-hover: 0 8px 40px hsl(173 80% 35% / 0.2);
+  }
+
+  .dark {
+    --background: 220 20% 7%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 20% 10%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 20% 10%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 173 80% 50%;
+    --primary-foreground: 220 20% 7%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 210 20% 90%;
+
+    --muted: 220 15% 13%;
+    --muted-foreground: 220 10% 60%;
+
+    --accent: 173 80% 50%;
+    --accent-foreground: 220 20% 7%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 18%;
+    --ring: 173 80% 50%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(173 80% 50%), hsl(190 80% 60%));
+    --gradient-card: linear-gradient(145deg, hsl(220 20% 12%), hsl(220 20% 10%));
+    --glow-primary: 0 0 60px hsl(173 80% 50% / 0.25);
+    --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 12px 50px hsl(173 80% 50% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-border {
+    position: relative;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+
+  .glow-effect {
+    box-shadow: var(--glow-primary);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  .card-shadow-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsl(173 80% 50% / 0.2);
+  }
+  to {
+    box-shadow: 0 0 40px hsl(173 80% 50% / 0.4);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
