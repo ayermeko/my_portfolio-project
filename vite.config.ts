@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ command, mode }) => ({
   server: {
     host: "::",
     port: 8080,
@@ -16,5 +16,5 @@ export default defineConfig(({ mode }) => ({
     },
   },
   // GitHub Pages deployment configuration
-  base: mode === 'production' ? '/my_portfolio-project/' : '/',
+  base: command === 'build' ? '/my_portfolio-project/' : '/',
 }));

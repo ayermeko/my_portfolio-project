@@ -9,7 +9,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 // Get the base URL for GitHub Pages deployment
-const basename = import.meta.env.PROD ? '/my_portfolio-project' : '';
+const basename = import.meta.env.MODE === 'development' ? '' : '/my_portfolio-project';
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
